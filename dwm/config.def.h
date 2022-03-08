@@ -3,10 +3,10 @@
 /* appearance */
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 0;        /* 0 means no bar */
+static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "terminus:size=10" };
-static const char dmenufont[]       = "terminus:size=14";
+static const char dmenufont[]       = "terminus:size=24";
 static const char col_gray1[]       = "#000000";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -30,7 +30,6 @@ static const Rule rules[] = {
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "firefox",  NULL,       NULL,       1 << 6,       False,           -1 },
 	{NULL, NULL, "qutebrowser", 		1 << 1,		False,		-1},
-	{NULL, NULL, "virt-manager", 		1 << 1, 	False, 		-1},
 };
 
 /* layout(s) */
@@ -63,7 +62,7 @@ static const char *lockcmd[] = {"slock", NULL};
 static const char *screenshot[] = {"scrot", "/home/el/Image/screenshots/%Y-%T-screenshot.jpg",NULL};
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *urlcmd[]  = { "clipmenu-url", NULL };
 static const char *clipcmd[]  = { "clipmenu", "-i", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
@@ -73,7 +72,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,			XK_l,      spawn,	   {.v =lockcmd }},
+	{ MODKEY|ShiftMask,		XK_l,      spawn,	   {.v =lockcmd }},
 	{ MODKEY,			XK_s,      spawn,   	   {.v =screenshot}},
 	{ MODKEY,                       XK_n, 	   spawn,          {.v = clipcmd } },
 	{ MODKEY,                       XK_g,      spawn,          {.v = urlcmd } },
@@ -98,15 +97,15 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	TAGKEYS(                        XK_a,                      0)
-	TAGKEYS(                        XK_z,                      1)
-	TAGKEYS(                        XK_e,                      2)
-	TAGKEYS(                        XK_r,                      3)
-	TAGKEYS(                        XK_t,                      4)
-	TAGKEYS(                        XK_y,                      5)
-	TAGKEYS(                        XK_u,                      6)
-	TAGKEYS(                        XK_i,                      7)
-	TAGKEYS(                        XK_o,                      8)
+	TAGKEYS(                        XK_1,                      0)
+	TAGKEYS(                        XK_2,                      1)
+	TAGKEYS(                        XK_3,                      2)
+	TAGKEYS(                        XK_4,                      3)
+	TAGKEYS(                        XK_5,                      4)
+	TAGKEYS(                        XK_6,                      5)
+	TAGKEYS(                        XK_7,                      6)
+	TAGKEYS(                        XK_8,                      7)
+	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
